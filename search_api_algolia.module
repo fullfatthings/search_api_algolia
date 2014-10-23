@@ -1,0 +1,39 @@
+<?php
+
+
+/**
+ * Implements hook_search_api_service_info().
+ */
+function search_api_algolia_search_api_service_info() {
+  $services['search_api_algolia_service'] = array(
+    'name' => t('Algolia service'),
+    'description' => t('<p>Index items using Algolia cloud search.</p>' .
+        '<ul><li>All field types are supported</li></ul>'),
+    'class' => 'SearchApiAlgoliaService',
+  );
+  return $services;
+}
+
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * Defining location of algolia php client library.
+ */
+function search_api_algolia_libraries_info() {
+  // Expected to be extracted into 'sites/all/libraries/algolia_api'.
+  $libraries['algolia_api'] = array(
+    'name' => 'Algolia API',
+    'vendor url' => 'https://github.com/algolia/algoliasearch-client-php',
+    'download url' => 'https://github.com/algolia/algoliasearch-client-php/archive/1.3.4.zip',
+    'version arguments' => array(
+      'file' => 'VERSION',
+      'pattern' => '@([0-9\.]+)@',
+    ),
+    'files' => array(
+      'php' => array('algoliasearch.php'),
+    ),
+  );
+  return $libraries;
+}
+

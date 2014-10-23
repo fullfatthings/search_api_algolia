@@ -1,0 +1,9 @@
+name = Algolia search
+description = "Offers an implementation of the Search API that uses Algolia cloud hosted search"
+dependencies[] = search_api
+dependencies[] = libraries
+core = 7.x
+package = Search
+files[] = service.inc
+
+
